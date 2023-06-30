@@ -77,6 +77,7 @@ struct ContentView: View {
                     populateAssistants()
                 }
             }
+            .navigationTitle(Text("Add Assistants"))
             .id(refreshID)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {

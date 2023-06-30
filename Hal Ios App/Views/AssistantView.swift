@@ -7,25 +7,27 @@ struct AssistantView: View {
     let coreDM: DataController
     
     let populateAssistants: () -> Void
+    
+    @State var selection = 0
+
 
     
     var body: some View {
-        VStack {
+        NavigationStack {
             
-            TabView {
+            TabView(selection: $selection) {
                 SkillAddView(ip: assistant.ipAddress ?? "")
                     .tabItem {
                         Image(systemName: "desktopcomputer.and.arrow.down")
                         Text("Add Skills")
-                }
+                }.tag(0)
                 SettingsView(assistant: assistant, coreDM: coreDM, populateAssistants: populateAssistants)
                     .tabItem {
                         Image(systemName: "gear")
                         Text("Settings")
-                    .navigationTitle("Settings")
-
-                }
+                }.tag(1)
             }
+            .navigationTitle(Text(selection == 0 ? "Modify \(assistant.name ?? "Assistant")" : "Manage Skills"))
         }
     }
     
