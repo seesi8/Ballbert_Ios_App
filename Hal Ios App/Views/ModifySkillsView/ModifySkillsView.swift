@@ -102,7 +102,7 @@ struct ModifySkillsView: View {
                         showAlert = true
                         activeAlert = .confirm
                     } label: {
-                        Text("Deleat Skill")
+                        Text("Delete Skill")
                             .foregroundColor(Color.red)
                     }
                     .alert(isPresented: $showAlert) {
@@ -126,7 +126,7 @@ struct ModifySkillsView: View {
                                 dismissButton: .default(Text("Ok"))
                             )
                         case .confirm:
-                            return Alert(title: Text("Are you sure you want to go Delete"), message: Text("Deleating will remove skill from the device"), primaryButton: .destructive(Text("Delete")) {
+                            return Alert(title: Text("Are you sure you want to go Delete"), message: Text("Deleting will remove skill from the device"), primaryButton: .destructive(Text("Delete")) {
                                 dismiss()
                                 removeSkill(ip: ip, skill_name: skill_name) { res in
                                     switch res {
