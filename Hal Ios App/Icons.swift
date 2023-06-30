@@ -1,0 +1,55 @@
+//
+//  Icons.swift
+//  Hal Ios App
+//
+//  Created by Sam Liebert on 6/28/23.
+//
+
+let icons = [
+    "house.fill",
+    "heart.fill",
+    "star.fill",
+    "sun.max.fill",
+    "moon.stars.fill",
+    "cloud.fill",
+    "cloud.bolt.fill",
+    "cloud.sun.fill",
+    "cloud.sun.rain.fill",
+    "tornado",
+    "hurricane",
+    "snow",
+    "thermometer.sun.fill",
+    "thermometer.snowflake",
+    "umbrella.fill",
+    "drop.triangle.fill",
+    "waveform.path.ecg",
+    "camera.fill",
+    "photo.fill",
+    "film.fill",
+    "music.note",
+    "mic.fill",
+    "headphones",
+    "gamecontroller.fill",
+    "tv.fill",
+    "book.fill",
+    "pencil.tip",
+    "scissors",
+    "paintbrush.fill",
+    "lightbulb.fill",
+    "hourglass",
+    "globe",
+    "map.fill",
+    "airplane",
+    "car.fill",
+    "bicycle",
+    "bag.fill",
+    "wallet.pass.fill",
+    "creditcard.fill",
+    "smiley.fill",
+    "hand.thumbsup.fill",
+    "hand.thumbsdown.fill",
+    "staroflife.fill",
+    "gift.fill",
+    "graduationcap.fill",
+    "flag.fill"
+]
