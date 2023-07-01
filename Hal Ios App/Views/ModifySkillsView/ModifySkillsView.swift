@@ -154,11 +154,6 @@ struct ModifySkillsView: View {
                     }
 
                 }
-                .toolbar {
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        EditButton()
-                    }
-                }
                 
                 Button(action: {
                     saveForm()
