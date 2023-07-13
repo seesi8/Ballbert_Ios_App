@@ -11,9 +11,17 @@
 		3C0351D72A4CF57200B4C73C /* Icons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C0351D62A4CF57200B4C73C /* Icons.swift */; };
 		3C0351D92A4CFDF300B4C73C /* tempAssistant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C0351D82A4CFDF300B4C73C /* tempAssistant.swift */; };
 		3C0351DB2A4D290D00B4C73C /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C0351DA2A4D290D00B4C73C /* SettingsView.swift */; };
+		3C0C44A32A60500100331BA9 /* getEnvVar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C0C44A22A60500100331BA9 /* getEnvVar.swift */; };
 		3C130FB32A4CC1C0003D2181 /* AssistantView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C130FB22A4CC1C0003D2181 /* AssistantView.swift */; };
 		3C130FB72A4CC639003D2181 /* Assistants.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3C130FB52A4CC639003D2181 /* Assistants.xcdatamodeld */; };
 		3C130FB92A4CC883003D2181 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C130FB82A4CC883003D2181 /* DataController.swift */; };
+		3C185FE12A5E639100169A3B /* SettingsSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C185FE02A5E639100169A3B /* SettingsSheetView.swift */; };
+		3C185FE42A5F3F3E00169A3B /* getLLMS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C185FE32A5F3F3E00169A3B /* getLLMS.swift */; };
+		3C185FE62A5F41A300169A3B /* CheckOpenaiApiKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C185FE52A5F41A300169A3B /* CheckOpenaiApiKey.swift */; };
+		3C185FE82A5F63F200169A3B /* CheckPorcupineApiKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C185FE72A5F63F200169A3B /* CheckPorcupineApiKey.swift */; };
+		3C185FEA2A5F82C100169A3B /* SetEnviromentVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C185FE92A5F82C100169A3B /* SetEnviromentVariables.swift */; };
+		3C185FEC2A5F919800169A3B /* GoogleCredentialFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C185FEB2A5F919800169A3B /* GoogleCredentialFile.swift */; };
+		3C185FEE2A5F9C6A00169A3B /* FileImporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C185FED2A5F9C6A00169A3B /* FileImporter.swift */; };
 		3C94629B2A4B814100A47461 /* Hal_Ios_AppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C94629A2A4B814100A47461 /* Hal_Ios_AppApp.swift */; };
 		3C94629D2A4B814100A47461 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C94629C2A4B814100A47461 /* ContentView.swift */; };
 		3C94629F2A4B814300A47461 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3C94629E2A4B814300A47461 /* Assets.xcassets */; };
@@ -53,9 +61,17 @@
 		3C0351D62A4CF57200B4C73C /* Icons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Icons.swift; sourceTree = "<group>"; };
 		3C0351D82A4CFDF300B4C73C /* tempAssistant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tempAssistant.swift; sourceTree = "<group>"; };
 		3C0351DA2A4D290D00B4C73C /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		3C0C44A22A60500100331BA9 /* getEnvVar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = getEnvVar.swift; sourceTree = "<group>"; };
 		3C130FB22A4CC1C0003D2181 /* AssistantView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssistantView.swift; sourceTree = "<group>"; };
 		3C130FB62A4CC639003D2181 /* Assistants.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Assistants.xcdatamodel; sourceTree = "<group>"; };
 		3C130FB82A4CC883003D2181 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
+		3C185FE02A5E639100169A3B /* SettingsSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSheetView.swift; sourceTree = "<group>"; };
+		3C185FE32A5F3F3E00169A3B /* getLLMS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = getLLMS.swift; sourceTree = "<group>"; };
+		3C185FE52A5F41A300169A3B /* CheckOpenaiApiKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckOpenaiApiKey.swift; sourceTree = "<group>"; };
+		3C185FE72A5F63F200169A3B /* CheckPorcupineApiKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckPorcupineApiKey.swift; sourceTree = "<group>"; };
+		3C185FE92A5F82C100169A3B /* SetEnviromentVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetEnviromentVariables.swift; sourceTree = "<group>"; };
+		3C185FEB2A5F919800169A3B /* GoogleCredentialFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleCredentialFile.swift; sourceTree = "<group>"; };
+		3C185FED2A5F9C6A00169A3B /* FileImporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileImporter.swift; sourceTree = "<group>"; };
 		3C9462972A4B814100A47461 /* Hal Ios App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Hal Ios App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C94629A2A4B814100A47461 /* Hal_Ios_AppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hal_Ios_AppApp.swift; sourceTree = "<group>"; };
 		3C94629C2A4B814100A47461 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -110,6 +126,8 @@
 				3C0351DA2A4D290D00B4C73C /* SettingsView.swift */,
 				3C969EE22A4DFFFC004B2995 /* SkillAddView.swift */,
 				3C969EF42A4F0A23004B2995 /* ModifySkillsView */,
+				3C185FE02A5E639100169A3B /* SettingsSheetView.swift */,
+				3C185FED2A5F9C6A00169A3B /* FileImporter.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -143,7 +161,7 @@
 				3C130FB52A4CC639003D2181 /* Assistants.xcdatamodeld */,
 				3C94629E2A4B814300A47461 /* Assets.xcassets */,
 				3C9462A02A4B814300A47461 /* Preview Content */,
-				3C969EE92A4E3F11004B2995 /* Folder */,
+				3C969EE92A4E3F11004B2995 /* Api */,
 				3C0351D62A4CF57200B4C73C /* Icons.swift */,
 				3C0351D82A4CFDF300B4C73C /* tempAssistant.swift */,
 			);
@@ -175,7 +193,7 @@
 			path = "Hal Ios AppUITests";
 			sourceTree = "<group>";
 		};
-		3C969EE92A4E3F11004B2995 /* Folder */ = {
+		3C969EE92A4E3F11004B2995 /* Api */ = {
 			isa = PBXGroup;
 			children = (
 				3C9462C42A4B986900A47461 /* InstallSkill.swift */,
@@ -184,8 +202,14 @@
 				3C969EEE2A4E3FA0004B2995 /* CheckConnection.swift */,
 				3C969EF02A4E4FC2004B2995 /* GetSettingsMeta.swift */,
 				3C969EF52A4F2FD5004B2995 /* SetSkill.swift */,
+				3C185FE32A5F3F3E00169A3B /* getLLMS.swift */,
+				3C185FE52A5F41A300169A3B /* CheckOpenaiApiKey.swift */,
+				3C185FE72A5F63F200169A3B /* CheckPorcupineApiKey.swift */,
+				3C185FE92A5F82C100169A3B /* SetEnviromentVariables.swift */,
+				3C185FEB2A5F919800169A3B /* GoogleCredentialFile.swift */,
+				3C0C44A22A60500100331BA9 /* getEnvVar.swift */,
 			);
-			path = Folder;
+			path = Api;
 			sourceTree = "<group>";
 		};
 		3C969EF42A4F0A23004B2995 /* ModifySkillsView */ = {
@@ -328,21 +352,29 @@
 			files = (
 				3C969EF12A4E4FC2004B2995 /* GetSettingsMeta.swift in Sources */,
 				3C969EF62A4F2FD5004B2995 /* SetSkill.swift in Sources */,
+				3C185FE82A5F63F200169A3B /* CheckPorcupineApiKey.swift in Sources */,
 				3C94629D2A4B814100A47461 /* ContentView.swift in Sources */,
 				3C969EEB2A4E3F35004B2995 /* RemoveSkill.swift in Sources */,
 				3C130FB92A4CC883003D2181 /* DataController.swift in Sources */,
+				3C185FE12A5E639100169A3B /* SettingsSheetView.swift in Sources */,
+				3C185FE42A5F3F3E00169A3B /* getLLMS.swift in Sources */,
 				3C0351D72A4CF57200B4C73C /* Icons.swift in Sources */,
 				3C969EE82A4E3EED004B2995 /* ModifySkillsView.swift in Sources */,
 				3C969EED2A4E3F8F004B2995 /* GetInstalledSkills.swift in Sources */,
 				3C969EEF2A4E3FA0004B2995 /* CheckConnection.swift in Sources */,
 				3C9462C52A4B986900A47461 /* InstallSkill.swift in Sources */,
+				3C185FEA2A5F82C100169A3B /* SetEnviromentVariables.swift in Sources */,
+				3C185FEC2A5F919800169A3B /* GoogleCredentialFile.swift in Sources */,
 				3C969EE32A4DFFFC004B2995 /* SkillAddView.swift in Sources */,
+				3C0C44A32A60500100331BA9 /* getEnvVar.swift in Sources */,
 				3C130FB72A4CC639003D2181 /* Assistants.xcdatamodeld in Sources */,
 				3C0351DB2A4D290D00B4C73C /* SettingsView.swift in Sources */,
 				3C94629B2A4B814100A47461 /* Hal_Ios_AppApp.swift in Sources */,
 				3C130FB32A4CC1C0003D2181 /* AssistantView.swift in Sources */,
 				3C0351D92A4CFDF300B4C73C /* tempAssistant.swift in Sources */,
 				3C0351D42A4CDF7D00B4C73C /* AssistantAdder.swift in Sources */,
+				3C185FE62A5F41A300169A3B /* CheckOpenaiApiKey.swift in Sources */,
+				3C185FEE2A5F9C6A00169A3B /* FileImporter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -27,7 +27,7 @@ struct AssistantView: View {
                         Text("Settings")
                 }.tag(1)
             }
-            .navigationTitle(Text(selection == 0 ? "Modify \(assistant.name ?? "Assistant")" : "Manage Skills"))
+            .navigationTitle(Text(selection == 1 ? "Modify \(assistant.name ?? "Assistant")" : "Manage Skills"))
         }
     }
     

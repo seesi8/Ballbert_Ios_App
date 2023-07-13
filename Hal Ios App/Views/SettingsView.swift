@@ -15,6 +15,9 @@ struct SettingsView: View {
     @State private var name: String = ""
     @State private var location: String = ""
     @State private var showIconPicker: Bool = false
+    @State private var openai = ""
+    @State private var porqupine = ""
+    @State private var llm = ""
     
     let assistant: Assistant
     let coreDM: DataController
@@ -32,6 +35,7 @@ struct SettingsView: View {
         assistant.selectedIcon = selectedIcon
         coreDM.updateAssistant()
         populateAssistants()
+        self.presentationMode.wrappedValue.dismiss()
     }
     
     func populateFields(){
@@ -39,73 +43,31 @@ struct SettingsView: View {
         selectedIcon = assistant.selectedIcon ?? "si"
         name = assistant.name ?? "nm"
         location = assistant.location ?? "lc"
+        
+        getEnviromentVariables(ip: ipAddress, key: "OPENAI_API_KEY") { api_key, err in
+            if api_key != nil{
+                openai = api_key ?? ""
+            }
+        }
+        getEnviromentVariables(ip: ipAddress, key: "PORQUPINE_API_KEY") { api_key, err in
+            if api_key != nil{
+                porqupine = api_key ?? ""
+            }
+
+        }
+        getEnviromentVariables(ip: ipAddress, key: "LLM") { theLLM, err in
+            if theLLM != nil{
+                llm = theLLM ?? ""
+            }
+
+        }
+
     }
     
     var body: some View {
-        Form {
-            Section(header: Text("Device Information")) {
-                //V-stack is there so that they are updated programaticly i have no idea why it is needed but sourse here: https://codecrew.codewithchris.com/t/textfield-doesnt-show-text-until-its-selected-new-xcode/15027
-                VStack{
-                    TextField("IP Address", text: $ipAddress)
-                }
-                VStack{
-                    TextField("Name", text: $name)
-                }
-                VStack{
-                    TextField("Location", text: $location)
-                }
-                
+        SettingsSheetView(ipAddress: $ipAddress, selectedIcon: $selectedIcon, name: $name, location: $location, openai: $openai, llm: $llm, porqupine: $porqupine, saveDeviceSettings: saveDeviceSettings)
+            .onAppear(){
+                populateFields()
             }
-            Section {
-                HStack {
-                    Text("Select Icon")
-                        .foregroundColor(.blue)
-                    Spacer()
-                    Text(selectedIcon)
-                        .foregroundColor(.gray)
-                    Image(systemName: showIconPicker ? "chevron.up" : "chevron.down")
-                        .foregroundColor(.blue)
-                }
-                .contentShape(Rectangle())
-                .onTapGesture {
-                    withAnimation {
-                        showIconPicker.toggle()
-                    }
-                }
-                if showIconPicker {
-                    LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())], spacing: 16) {
-                        ForEach(icons, id: \.self) { icon in
-                            Button(action: {
-                                withAnimation {
-                                    selectedIcon = icon
-                                    showIconPicker.toggle()
-                                }
-                            }) {
-                                Image(systemName: icon)
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                                    .frame(width: 50, height: 50)
-                                    .padding(8)
-                                    .background(selectedIcon == icon ? Color.blue.opacity(0.5) : Color.clear)
-                                    .cornerRadius(10)
-                            }
-                            .buttonStyle(PlainButtonStyle())
-                        }
-                    }
-                    .padding(.top, 8)
-                    .transition(.opacity)
-                }
-            }
-            Section {
-                Button("Save") {
-                    saveDeviceSettings()
-                    self.presentationMode.wrappedValue.dismiss()
-
-                }
-                .disabled(!validateFields())                }
-        }
-        .onAppear(){
-            populateFields()
-        }
     }
 }

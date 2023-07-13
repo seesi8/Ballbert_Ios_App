@@ -21,6 +21,8 @@ struct SkillAddView: View {
     @State private var activeAlert: ActiveAlert = .install
 
     
+    
+    
     func addButtonTapped() {
         addSkill(ip: ip, gitURL: url) { res in
             populateInstalledSkills()
