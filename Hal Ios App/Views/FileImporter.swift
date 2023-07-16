@@ -22,7 +22,7 @@ struct FileImporter: View {
         APIManager.validateFile(ip: ipAddress, fileURL: fileURL) { isValid in
             self.fileValid = isValid
         }
-    }
+    } 
     
     var body: some View {
         VStack{
