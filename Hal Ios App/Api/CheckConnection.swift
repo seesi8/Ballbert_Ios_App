@@ -1,10 +1,3 @@
-//
-//  CheckConnection.swift
-//  Hal Ios App
-//
-//  Created by Sam Liebert on 6/29/23.
-//
-
 import Foundation
 
 func checkConnection(ip: String, completion: @escaping (Bool) -> Void) {
@@ -28,4 +21,12 @@ func checkConnection(ip: String, completion: @escaping (Bool) -> Void) {
         }
     }
     task.resume()
+    
+    // Add a timeout delay
+    DispatchQueue.main.asyncAfter(deadline: .now() + 0.75) {
+        if task.state == .running {
+            task.cancel()
+            completion(false)
+        }
+    }
 }

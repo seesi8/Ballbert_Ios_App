@@ -13,7 +13,7 @@ struct Hal_Ios_AppApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ContentView(coreDM: DataController())
+            ContentView(coreDM: dataController)
                 .environment(\.managedObjectContext, dataController.container.viewContext)
         }
     }

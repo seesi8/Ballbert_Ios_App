@@ -18,6 +18,7 @@ struct SettingsView: View {
     @State private var openai = ""
     @State private var porqupine = ""
     @State private var llm = ""
+    @State private var huggingface = ""
     
     let assistant: Assistant
     let coreDM: DataController
@@ -65,7 +66,7 @@ struct SettingsView: View {
     }
     
     var body: some View {
-        SettingsSheetView(ipAddress: $ipAddress, selectedIcon: $selectedIcon, name: $name, location: $location, openai: $openai, llm: $llm, porqupine: $porqupine, saveDeviceSettings: saveDeviceSettings)
+        SettingsSheetView(ipAddress: $ipAddress, selectedIcon: $selectedIcon, name: $name, location: $location, openai: $openai, llm: $llm, huggingface: $huggingface, porqupine: $porqupine, saveDeviceSettings: saveDeviceSettings)
             .onAppear(){
                 populateFields()
             }

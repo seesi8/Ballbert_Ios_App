@@ -1,16 +1,9 @@
-//
-//  SetEnviromentVariables.swift
-//  Hal Ios App
-//
-//  Created by Sam Liebert on 7/12/23.
-//
-
 import Foundation
 
 
-func setEnviromentVariables(ip: String, openai: String, porcupine: String, llm:String,huggingface: String , completion: @escaping (Result<Any, Error>) -> Void) {
+func setWifi(ssid: String, password: String, completion: @escaping (Result<Any, Error>) -> Void) {
     // Prepare URL
-    guard let url = URL(string: "http://\(ip):5000/set_enviroment_variables") else {
+    guard let url = URL(string: "http://192.168.50.10:5000/save_credentials") else {
         fatalError("Invalid URL")
     }
 
@@ -19,12 +12,8 @@ func setEnviromentVariables(ip: String, openai: String, porcupine: String, llm:S
     request.httpMethod = "POST"
 
     let requestBody: [String: Any] = [
-        "variables": [
-            "OPENAI_API_KEY": openai,
-            "PORQUPINE_API_KEY": porcupine,
-            "LLM": llm,
-            "HUGGINGFACE_API_KEY": huggingface
-        ]
+        "ssid": ssid,
+        "wifi_key": password
     ]
 
     do {
@@ -55,4 +44,5 @@ func setEnviromentVariables(ip: String, openai: String, porcupine: String, llm:S
     }
     task.resume()
 }
+
 

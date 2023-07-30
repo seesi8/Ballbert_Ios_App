@@ -8,13 +8,13 @@
 import SwiftUI
 
 struct AssistantAdder: View {
-    @State private var showAddSheet = false
     @State private var ipAddress = ""
     @State private var selectedIcon = ""
     @State private var name = ""
     @State private var location = ""
     @State private var openai = ""
     @State private var porqupine = ""
+    @State private var huggingface = ""
     @State private var llm = ""
     
     let coreDM: DataController
@@ -23,24 +23,17 @@ struct AssistantAdder: View {
     
     
     func saveDeviceSettings() {
+        print("saving")
         coreDM.saveAssistant(ipAddress: ipAddress, name: name, location: location, selectedIcon: selectedIcon)
+        print("saved")
         populateAssistants()
-        showAddSheet.toggle()
     }
     
     
     
     var body: some View {
-        Button {
-            showAddSheet.toggle()
-        } label: {
-            Image(systemName: "plus.circle")
-                .resizable()
-        }
-        .sheet(isPresented: $showAddSheet) {
-            SettingsSheetView(ipAddress: $ipAddress, selectedIcon: $selectedIcon, name: $name, location: $location, openai: $openai, llm: $llm, porqupine: $porqupine, saveDeviceSettings: saveDeviceSettings)
-            .navigationTitle("Device Settings")
-        }
+        SettingsSheetView(ipAddress: $ipAddress, selectedIcon: $selectedIcon, name: $name, location: $location, openai: $openai, llm: $llm, huggingface: $huggingface, porqupine: $porqupine, saveDeviceSettings: saveDeviceSettings)
+        .navigationTitle("Device Settings")
     }
 }
 

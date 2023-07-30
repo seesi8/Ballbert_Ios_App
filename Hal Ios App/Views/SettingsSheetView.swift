@@ -14,6 +14,7 @@ struct SettingsSheetView: View {
     @Binding var location : String
     @Binding var openai: String
     @Binding var llm: String
+    @Binding var huggingface: String
     @State var isShowing = false
     @Binding var porqupine: String
     @State private var isApiKeyValid = false
@@ -22,6 +23,7 @@ struct SettingsSheetView: View {
     @State private var llms: [String] = [String]()
     @State private var selectedFile: URL?
     @State private var fileValid = false
+    @State private var isHuggingFaceValid = false
     
     func validateFile() {
         guard let fileURL = selectedFile else {
@@ -45,8 +47,16 @@ struct SettingsSheetView: View {
         }
     }
     
+    func validateHuggingFaceApiKey() {
+        checkHuggingFaceApiKey(ip: ipAddress, key: huggingface) { isValid in
+            DispatchQueue.main.async {
+                isHuggingFaceValid = isValid ?? false
+            }
+        }
+    }
+    
     func validateFields() -> Bool {
-        return !$ipAddress.wrappedValue.isEmpty && !$name.wrappedValue.isEmpty && !$location.wrappedValue.isEmpty && !$selectedIcon.wrappedValue.isEmpty && !$llm.wrappedValue.isEmpty && isApiKeyValid && isPorcupineKeyValid && fileValid
+        return !$ipAddress.wrappedValue.isEmpty && !$name.wrappedValue.isEmpty && !$location.wrappedValue.isEmpty && !$selectedIcon.wrappedValue.isEmpty && !$llm.wrappedValue.isEmpty && isApiKeyValid && isHuggingFaceValid && isPorcupineKeyValid && fileValid
     }
     
     func validatePorqupineApiKey() {
@@ -74,111 +84,122 @@ struct SettingsSheetView: View {
     
     
     var body: some View {
-        Form {
-            Section(header: Text("Device Information")) {
-                TextField("IP Address", text: $ipAddress)
-                    .onChange(of: ipAddress) { _ in
-                        getEnviromentVariables(ip: ipAddress, key: "GOOGLE_APPLICATION_CREDENTIALS") { google, err in
-                            if google != nil{
-                                fileValid = true
-                            }
-                        }
-                    }
-                TextField("Name", text: $name)
-                TextField("Location", text: $location)
-            }
-            Section(header: Text("Device Settings")) {
-                TextField("Open Ai API Key", text: $openai)
-                    .onChange(of: openai) { _ in
-                        // Validate the API key whenever it changes
-                        validateOpenaiApiKey()
-                        populateLLMS()
-                    }
-                    .foregroundColor(isApiKeyValid ? .green : .red) // Change text color based on validation result
-
-                TextField("Porqupine API Key", text: $porqupine)
-                    .onChange(of: porqupine) { _ in
-                        // Validate the API key whenever it changes
-                        validatePorqupineApiKey()
-                    }
-                    .foregroundColor(isPorcupineKeyValid ? .green : .red) // Change text color based on validation result
-                Picker("LLM", selection: $llm) {
-                    ForEach(llms, id: \.self) { model in
-                        Text(model)
-                    }
-                }
-            }
-            Section {
-                HStack {
-                    Text("Select Icon")
-                        .foregroundColor(.blue)
-                    Spacer()
-                    Text($selectedIcon.wrappedValue)
-                        .foregroundColor(.gray)
-                    Image(systemName: showIconPicker ? "chevron.up" : "chevron.down")
-                        .foregroundColor(.blue)
-                }
-                .contentShape(Rectangle())
-                .onTapGesture {
-                    withAnimation {
-                        showIconPicker.toggle()
-                    }
-                }
-                if showIconPicker {
-                    LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())], spacing: 16) {
-                        ForEach(icons, id: \.self) { icon in
-                            Button(action: {
-                                withAnimation {
-                                    $selectedIcon.wrappedValue = icon
-                                    showIconPicker.toggle()
+        VStack{
+            Text("Make sure you are connected to the same network as the device.")
+                .multilineTextAlignment(.center)
+                .font(.subheadline)
+            Form {
+                Section(header: Text("Device Information")) {
+                    TextField("IP Address", text: $ipAddress)
+                        .onChange(of: ipAddress) { _ in
+                            getEnviromentVariables(ip: ipAddress, key: "GOOGLE_APPLICATION_CREDENTIALS") { google, err in
+                                if google != nil{
+                                    fileValid = true
                                 }
-                            }) {
-                                Image(systemName: icon)
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                                    .frame(width: 50, height: 50)
-                                    .padding(8)
-                                    .background($selectedIcon.wrappedValue == icon ? Color.blue.opacity(0.5) : Color.clear)
-                                    .cornerRadius(10)
                             }
-                            .buttonStyle(PlainButtonStyle())
+                        }
+                    TextField("Name", text: $name)
+                    TextField("Location", text: $location)
+                }
+                Section(header: Text("Device Settings")) {
+                    TextField("Open Ai API Key", text: $openai)
+                        .onChange(of: openai) { _ in
+                            // Validate the API key whenever it changes
+                            validateOpenaiApiKey()
+                            populateLLMS()
+                        }
+                        .foregroundColor(isApiKeyValid ? .green : .red) // Change text color based on validation result
+                    TextField("HuggingFace Api Key", text: $huggingface)
+                        .onChange(of: openai) { _ in
+                            // Validate the API key whenever it changes
+                            validateHuggingFaceApiKey()
+                        }
+                        .foregroundColor(isHuggingFaceValid ? .green : .red) // Change text color based on validation result
+                    
+                    TextField("Porqupine API Key", text: $porqupine)
+                        .onChange(of: porqupine) { _ in
+                            // Validate the API key whenever it changes
+                            validatePorqupineApiKey()
+                        }
+                        .foregroundColor(isPorcupineKeyValid ? .green : .red) // Change text color based on validation result
+                    Picker("LLM", selection: $llm) {
+                        ForEach(llms, id: \.self) { model in
+                            Text(model)
                         }
                     }
-                    .padding(.top, 8)
-                    .transition(.opacity)
                 }
-                VStack{
-                    Button {
-                        isShowing.toggle()
-                    } label: {
-                        Text("Upload Google Cloud Credentials")
-                            .foregroundColor(fileValid ? Color.green : Color.red)
+                Section {
+                    HStack {
+                        Text("Select Icon")
+                            .foregroundColor(.blue)
+                        Spacer()
+                        Text($selectedIcon.wrappedValue)
+                            .foregroundColor(.gray)
+                        Image(systemName: showIconPicker ? "chevron.up" : "chevron.down")
+                            .foregroundColor(.blue)
                     }
-                }
-                .fileImporter(isPresented: $isShowing, allowedContentTypes: [.json],   allowsMultipleSelection: false) { result in
-                    
-                    do {
-                        guard let selectedFile: URL = try result.get().first else { return }
-
-                        self.selectedFile = selectedFile
-                        validateFile()
-                    } catch {
-                        // Handle failure.
+                    .contentShape(Rectangle())
+                    .onTapGesture {
+                        withAnimation {
+                            showIconPicker.toggle()
+                        }
                     }
-                }
-            }
-            Section {
-                Button("Save") {
-                    setEnviromentVariables(ip: ipAddress, openai: openai, porcupine: porqupine, llm: llm) { _ in
+                    if showIconPicker {
+                        LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())], spacing: 16) {
+                            ForEach(icons, id: \.self) { icon in
+                                Button(action: {
+                                    withAnimation {
+                                        $selectedIcon.wrappedValue = icon
+                                        showIconPicker.toggle()
+                                    }
+                                }) {
+                                    Image(systemName: icon)
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                        .frame(width: 50, height: 50)
+                                        .padding(8)
+                                        .background($selectedIcon.wrappedValue == icon ? Color.blue.opacity(0.5) : Color.clear)
+                                        .cornerRadius(10)
+                                }
+                                .buttonStyle(PlainButtonStyle())
+                            }
+                        }
+                        .padding(.top, 8)
+                        .transition(.opacity)
+                    }
+                    VStack{
+                        Button {
+                            isShowing.toggle()
+                        } label: {
+                            Text("Upload Google Cloud Credentials")
+                                .foregroundColor(fileValid ? Color.green : Color.red)
+                        }
+                    }
+                    .fileImporter(isPresented: $isShowing, allowedContentTypes: [.json],   allowsMultipleSelection: false) { result in
                         
+                        do {
+                            guard let selectedFile: URL = try result.get().first else { return }
+                            
+                            self.selectedFile = selectedFile
+                            validateFile()
+                        } catch {
+                            // Handle failure.
+                        }
                     }
-                    saveDeviceSettings()
                 }
-                .disabled(!validateFields())
+                Section {
+                    Button("Save") {
+                        setEnviromentVariables(ip: ipAddress, openai: openai, porcupine: porqupine, llm: llm, huggingface: huggingface) { _ in
+                            
+                        }
+                        saveDeviceSettings()
+                    }
+                    .disabled(!validateFields())
+                }
             }
-        }
-        .onAppear(){
-            populateLLMS()
+            .onAppear(){
+                populateLLMS()
+            }
         }
     }
 }
@@ -191,6 +212,7 @@ struct SettingsSheetView_Previews: PreviewProvider {
                           location: .constant("Home"),
                           openai: .constant("32sdfsdf"),
                           llm: .constant("gpt-3.5"),
+                          huggingface: .constant("fdsfds"),
                           porqupine: .constant("dsfdsfdsf"),
                           saveDeviceSettings: {})
     }

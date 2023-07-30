@@ -15,82 +15,36 @@ struct AssistantInfo : Hashable {
 }
 
 struct ContentView: View {
-    @Environment(\.colorScheme) var colorScheme
 
-    @State private var assistants: [Assistant] = [Assistant]()
-    @State private var refreshID = UUID()
-
+    @State private var currentPage = 0
     let coreDM: DataController
-   
-    private func populateAssistants() {
-        assistants = coreDM.getAllAssistants()
-        refreshID = UUID()
-    }
-    
-    @State private var connectionStatus: [String: Bool] = [:]
+    @State private var refreshId = UUID()
+    @State private var showAlert = false
 
-    private func checkAssistantConnection(_ assistant: Assistant) {
-        guard let ipAddress = assistant.ipAddress else {
-            return
-        }
-        
-        checkConnection(ip: ipAddress) { isConnected in
-            DispatchQueue.main.async {
-                connectionStatus[ipAddress] = isConnected
-            }
-        }
-    }
     
     var body: some View {
-        NavigationStack {
-            List {
-                ForEach(assistants, id: \.self) { assistant in
-                    NavigationLink(destination: AssistantView(
-                        assistant: assistant,
-                        coreDM: coreDM,
-                        populateAssistants: populateAssistants
-                    )) {
-                        HStack {
-                            Image(systemName: assistant.selectedIcon ?? "hand.thumbsdown.fill")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 45, height: 45)
-                            
-                            VStack(alignment: .leading) {
-                                Text(assistant.name ?? "Error")
-                                Text(assistant.ipAddress ?? "127.0.0.1")
-                                    .font(.footnote)
-                                    .foregroundColor(connectionStatus[assistant.ipAddress ?? ""] == true ? Color.green : Color.red)
-                            }
-                            
-                            Spacer()
-                        }
-                    }
-                    .onAppear {
-                        checkAssistantConnection(assistant)
-                    }
-                }
-                .onDelete { indexSet in
-                    indexSet.forEach { index in
-                        coreDM.deleteAssistant(assistant: assistants[index])
-                    }
-                    populateAssistants()
-                }
+        if currentPage == 0{
+            AssistantList(currentPage: $currentPage, coreDM: coreDM)
+                .tag(refreshId)
+        }
+        else if currentPage == 1{
+            ConnectToBallbertWifiView(currentPage: $currentPage)
+        }
+        else if currentPage == 2{
+            ConfigueBallbertWiFi(currentPage: $currentPage)
+        }
+        else{
+            AssistantAdder(coreDM: coreDM) {
+                refreshId = UUID()
+                currentPage = 0
             }
-            .navigationTitle(Text("Add Assistants"))
-            .id(refreshID)
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    AssistantAdder(coreDM: coreDM, populateAssistants: populateAssistants)
-                }
-                ToolbarItem(placement: .navigationBarLeading) {
-                    EditButton()
-                }
+            .onAppear(){
+                showAlert = true
+            }
+            .alert(isPresented: $showAlert) {
+                Alert(title: Text("Please Connect To The Same Wifi You Just Put In."))
             }
         }
-        .onAppear(perform: {
-            populateAssistants()
-        })
     }
 }
 

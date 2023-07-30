@@ -37,6 +37,11 @@
 		3C969EEF2A4E3FA0004B2995 /* CheckConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C969EEE2A4E3FA0004B2995 /* CheckConnection.swift */; };
 		3C969EF12A4E4FC2004B2995 /* GetSettingsMeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C969EF02A4E4FC2004B2995 /* GetSettingsMeta.swift */; };
 		3C969EF62A4F2FD5004B2995 /* SetSkill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C969EF52A4F2FD5004B2995 /* SetSkill.swift */; };
+		3CF8D8AF2A68C9EF00F8C210 /* ConfigueBallbertWiFi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CF8D8AE2A68C9EF00F8C210 /* ConfigueBallbertWiFi.swift */; };
+		3CF8D8B12A68D72200F8C210 /* SetWifi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CF8D8B02A68D72200F8C210 /* SetWifi.swift */; };
+		3CF8D8B32A76EE8000F8C210 /* HuggingFaceApiKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CF8D8B22A76EE8000F8C210 /* HuggingFaceApiKey.swift */; };
+		3CFE9AF02A68985B00916A2E /* AssistantList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CFE9AEF2A68985A00916A2E /* AssistantList.swift */; };
+		3CFE9AF22A68998100916A2E /* ConnectToBallbertWifiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CFE9AF12A68998100916A2E /* ConnectToBallbertWifiView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,6 +95,11 @@
 		3C969EEE2A4E3FA0004B2995 /* CheckConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckConnection.swift; sourceTree = "<group>"; };
 		3C969EF02A4E4FC2004B2995 /* GetSettingsMeta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetSettingsMeta.swift; sourceTree = "<group>"; };
 		3C969EF52A4F2FD5004B2995 /* SetSkill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetSkill.swift; sourceTree = "<group>"; };
+		3CF8D8AE2A68C9EF00F8C210 /* ConfigueBallbertWiFi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigueBallbertWiFi.swift; sourceTree = "<group>"; };
+		3CF8D8B02A68D72200F8C210 /* SetWifi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetWifi.swift; sourceTree = "<group>"; };
+		3CF8D8B22A76EE8000F8C210 /* HuggingFaceApiKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HuggingFaceApiKey.swift; sourceTree = "<group>"; };
+		3CFE9AEF2A68985A00916A2E /* AssistantList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssistantList.swift; sourceTree = "<group>"; };
+		3CFE9AF12A68998100916A2E /* ConnectToBallbertWifiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectToBallbertWifiView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +138,9 @@
 				3C969EF42A4F0A23004B2995 /* ModifySkillsView */,
 				3C185FE02A5E639100169A3B /* SettingsSheetView.swift */,
 				3C185FED2A5F9C6A00169A3B /* FileImporter.swift */,
+				3CFE9AEF2A68985A00916A2E /* AssistantList.swift */,
+				3CFE9AF12A68998100916A2E /* ConnectToBallbertWifiView.swift */,
+				3CF8D8AE2A68C9EF00F8C210 /* ConfigueBallbertWiFi.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -208,6 +221,8 @@
 				3C185FE92A5F82C100169A3B /* SetEnviromentVariables.swift */,
 				3C185FEB2A5F919800169A3B /* GoogleCredentialFile.swift */,
 				3C0C44A22A60500100331BA9 /* getEnvVar.swift */,
+				3CF8D8B02A68D72200F8C210 /* SetWifi.swift */,
+				3CF8D8B22A76EE8000F8C210 /* HuggingFaceApiKey.swift */,
 			);
 			path = Api;
 			sourceTree = "<group>";
@@ -350,6 +365,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3CF8D8AF2A68C9EF00F8C210 /* ConfigueBallbertWiFi.swift in Sources */,
+				3CFE9AF02A68985B00916A2E /* AssistantList.swift in Sources */,
 				3C969EF12A4E4FC2004B2995 /* GetSettingsMeta.swift in Sources */,
 				3C969EF62A4F2FD5004B2995 /* SetSkill.swift in Sources */,
 				3C185FE82A5F63F200169A3B /* CheckPorcupineApiKey.swift in Sources */,
@@ -357,6 +374,7 @@
 				3C969EEB2A4E3F35004B2995 /* RemoveSkill.swift in Sources */,
 				3C130FB92A4CC883003D2181 /* DataController.swift in Sources */,
 				3C185FE12A5E639100169A3B /* SettingsSheetView.swift in Sources */,
+				3CFE9AF22A68998100916A2E /* ConnectToBallbertWifiView.swift in Sources */,
 				3C185FE42A5F3F3E00169A3B /* getLLMS.swift in Sources */,
 				3C0351D72A4CF57200B4C73C /* Icons.swift in Sources */,
 				3C969EE82A4E3EED004B2995 /* ModifySkillsView.swift in Sources */,
@@ -367,12 +385,14 @@
 				3C185FEC2A5F919800169A3B /* GoogleCredentialFile.swift in Sources */,
 				3C969EE32A4DFFFC004B2995 /* SkillAddView.swift in Sources */,
 				3C0C44A32A60500100331BA9 /* getEnvVar.swift in Sources */,
+				3CF8D8B12A68D72200F8C210 /* SetWifi.swift in Sources */,
 				3C130FB72A4CC639003D2181 /* Assistants.xcdatamodeld in Sources */,
 				3C0351DB2A4D290D00B4C73C /* SettingsView.swift in Sources */,
 				3C94629B2A4B814100A47461 /* Hal_Ios_AppApp.swift in Sources */,
 				3C130FB32A4CC1C0003D2181 /* AssistantView.swift in Sources */,
 				3C0351D92A4CFDF300B4C73C /* tempAssistant.swift in Sources */,
 				3C0351D42A4CDF7D00B4C73C /* AssistantAdder.swift in Sources */,
+				3CF8D8B32A76EE8000F8C210 /* HuggingFaceApiKey.swift in Sources */,
 				3C185FE62A5F41A300169A3B /* CheckOpenaiApiKey.swift in Sources */,
 				3C185FEE2A5F9C6A00169A3B /* FileImporter.swift in Sources */,
 			);
