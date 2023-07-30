@@ -50,6 +50,11 @@ struct SettingsView: View {
                 openai = api_key ?? ""
             }
         }
+        getEnviromentVariables(ip: ipAddress, key: "HUGGINGFACE_API_KEY") { api_key, err in
+            if api_key != nil{
+                huggingface = api_key ?? ""
+            }
+        }
         getEnviromentVariables(ip: ipAddress, key: "PORQUPINE_API_KEY") { api_key, err in
             if api_key != nil{
                 porqupine = api_key ?? ""
